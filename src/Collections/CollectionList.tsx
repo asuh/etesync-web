@@ -58,7 +58,7 @@ export default function CollectionList(props: PropsType) {
     <Container>
       <AppBarOverride title="Collections">
         <IconButton
-          component={Link}
+          component={Link as any}
           title="New"
           {...{ to: routeResolver.getRoute("collections.new") }}
         >

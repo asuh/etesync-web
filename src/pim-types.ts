@@ -185,6 +185,13 @@ export class TaskType extends EventType {
 
   constructor(comp?: ICAL.Component | null) {
     super(comp ? comp : new ICAL.Component("vtodo"));
+    // Override endDate — not applicable for tasks
+    Object.defineProperty(this, "endDate", {
+      get() {
+        return undefined as any;
+      },
+      configurable: true,
+    });
   }
 
   get finished() {
@@ -262,11 +269,6 @@ export class TaskType extends EventType {
 
   get relatedTo(): string | undefined {
     return this.component.getFirstPropertyValue("related-to");
-  }
-
-  get endDate() {
-    // XXX: A hack to override this as it shouldn't be used
-    return undefined as any;
   }
 
   get allDay() {
