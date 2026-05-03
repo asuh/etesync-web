@@ -22,9 +22,9 @@ export function timezoneLoadFromName(timezone: string | null) {
     return null;
   }
 
-  let zone = zones.zones[timezone];
-  if (!zone && zones.aliases[timezone]) {
-    zone = zones.zones[zones.aliases[timezone]];
+  let zone = (zones.zones as Record<string, any>)[timezone];
+  if (!zone && (zones.aliases as Record<string, any>)[timezone]) {
+    zone = (zones.zones as Record<string, any>)[(zones.aliases as Record<string, any>)[timezone].aliasTo];
   }
 
   if (!zone) {

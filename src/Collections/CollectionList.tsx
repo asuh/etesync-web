@@ -27,7 +27,7 @@ interface PropsType {
 export default function CollectionList(props: PropsType) {
   const history = useHistory();
 
-  const collectionMap = {
+  const collectionMap: Record<string, React.ReactNode[]> = {
     "etebase.vcard": [],
     "etebase.vevent": [],
     "etebase.vtodo": [],
